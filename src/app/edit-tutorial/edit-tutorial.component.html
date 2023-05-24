@@ -1,0 +1,27 @@
+<div class="container m-4">
+    <div>
+        <h4>Edit Tutorial</h4>
+        <form>
+            <div class="form-group">
+               <label for="title">Course Name</label>
+               <input type="text" class="form-control" id="title" name="title" [(ngModel)]="currentTutorial.title"/>
+            </div>
+            <div class="form-group">
+                <label for="description">Course Description</label>
+                <input type="text" class="form-control" id="description" name="description" [(ngModel)]="currentTutorial.description"/>
+             </div>
+             <div class="form-group my-1">
+                <label for="title">Course Status:</label>   
+                {{currentTutorial.published ? "Published" : "Unpublished"}}
+             </div>
+        </form>
+        <button class="btn btn-warning" *ngIf="currentTutorial.published" (click)="updateCourseStatus(false)">Unpublish</button>
+        <button class="btn btn-success mx-2" *ngIf="!currentTutorial.published" (click)="updateCourseStatus(true)">Publish</button>
+        <br><br>
+        <button class="btn btn-primary" (click)="updateTutorial()">Update Data</button>
+        {{this.message}}
+    </div>
+    <!-- <div *ngIf="!currentTutorial.id">
+        <p>Unable to access Tutorial</p>
+    </div> -->
+</div>

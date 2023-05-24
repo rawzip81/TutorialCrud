@@ -1,0 +1,26 @@
+<!-- button -->
+<div class="container m-4">
+    <div class="mx-4">
+<button class="btn btn-primary" routerLink="/">Go Home</button>
+    </div>
+    <!-- form -->
+    <div class="m-4" *ngIf="!submitted">
+        <form>
+            <div class="form-group my-4">
+              <label for="course-name">Course Name</label>
+              <input type="text" [(ngModel)]="tutorial.title" class="form-control" name="course-name" id="course-name" placeholder="Enter Course Name">
+            </div>
+            <div class="form-group my-4">
+              <label for="description">Course Description</label>
+                <textarea type="text" [(ngModel)]="tutorial.description" class="form-control" name="description" id="description" placeholder="Enter Course Description">
+                </textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="saveTutorial()">Submit</button>
+          </form>
+    </div>
+<div *ngIf="submitted">
+  <h3>Tutorial Successfully Added</h3>
+  <button class="btn btn-success" (click)="clearInputData()">Add Another</button>
+</div>
+</div>
+

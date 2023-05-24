@@ -1,0 +1,48 @@
+<div class="m-4 container">
+    <div class="row">
+       <div class="m-2">
+            <button routerLink="/add" type="button" class="btn btn-success">Add Tutorial</button>
+            <button class="btn btn-danger mx-4" (click)="removeAllTutorial()">Remove All Tutorial</button>
+       </div>
+    </div>
+    <div> 
+        <table class="table table-responsive table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Course Name</th>
+                <th scope="col">Course Description</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+                
+              </tr>
+            </thead>
+            <tbody *ngFor="let data of tutorials; let i = index">
+              <tr>
+                <th scope="row">{{i+1}}</th>
+                <td>{{data.title}}</td>
+                <td>{{data.description}}</td>
+                <td>{{data.published}}</td>
+                <td>
+                <!-- view -->
+                <a class="mx-2" (click)="getTutorialById(data.id)"><i class="bi bi-eye"></i></a>
+                <!-- edit -->
+                <a class="mx-2" routerLink="/edit/{{data.id}}"><i class="bi bi-pencil-square" style="color: #FFC107;"></i></a>
+                <!-- delete by id -->
+                <a class="mx-2" (click)="deleteCurrentTutorial(data.id)"><i class="bi bi-trash" style="color: #e33724;"></i></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
+<div *ngIf="showTutorialDetail">
+  <div class="mx-4">
+    <p>Course Name: {{currentTutorial.title}}</p>
+    <p>Course Description: {{currentTutorial.description}}</p>
+    <p>Course Status: {{currentTutorial.published}}</p>
+   
+  </div>
+</div>
+<router-outlet></router-outlet>
+
